@@ -15,6 +15,39 @@ public class APICalculator {
         priorities.put("^", 3);
     }
 
+    public static double calculate(String expression) {
+        Stack<Double> numbers = new Stack<>();
+        Queue<String> queue = new ArrayDeque<>(getRPN(expression));
+
+        while (queue.size() != 0) {
+            if (priorities.containsKey(queue.peek())) {
+                double first = numbers.pop();
+                double second = numbers.pop();
+
+                switch (Objects.requireNonNull(queue.poll())) {
+                    case "+":
+                        numbers.push(first + second);
+                        break;
+                    case "-":
+                        numbers.push(second - first);
+                        break;
+                    case "*":
+                        numbers.push(first * second);
+                        break;
+                    case "/":
+                        numbers.push(second / first);
+                        break;
+                    case "^":
+                        numbers.push(Math.pow(second, first));
+                        break;
+                }
+            } else {
+                numbers.push(Double.parseDouble(queue.poll()));
+            }
+        }
+        return numbers.pop();
+    }
+
     private static Stack<String> getRPN(String expression) {
         Stack<String> operands = new Stack<>();
         Stack<String> integers = new Stack<>();
