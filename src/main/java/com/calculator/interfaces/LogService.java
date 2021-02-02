@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface LogService {
-    boolean save(LogDTO logDTO);
+    void save(LogDTO logDTO);
 }

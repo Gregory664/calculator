@@ -19,7 +19,7 @@ public class LogServiceImpl implements LogService {
     }
 
     @Override
-    public boolean save(LogDTO logDTO) {
-        return repository.save(mapper.toLog(logDTO)) != null;
+    public void save(LogDTO logDTO) {
+        repository.save(mapper.toLog(logDTO));
     }
 }
