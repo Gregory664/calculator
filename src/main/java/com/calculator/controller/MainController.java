@@ -1,5 +1,6 @@
-package com.calculator;
+package com.calculator.controller;
 
+import com.calculator.APICalculator;
 import com.calculator.dto.LogDTO;
 import com.calculator.interfaces.LogService;
 import org.springframework.beans.factory.annotation.Autowired;
