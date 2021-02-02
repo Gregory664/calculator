@@ -1,5 +1,8 @@
 package com.calculator;
 
+import com.calculator.exception.DividedByZeroException;
+import com.calculator.exception.NegativeDegreeException;
+
 import java.util.*;
 
 public class APICalculator {
@@ -35,10 +38,17 @@ public class APICalculator {
                         numbers.push(first * second);
                         break;
                     case "/":
+                        if (first == 0) {
+                            throw new DividedByZeroException();
+                        }
                         numbers.push(second / first);
                         break;
                     case "^":
-                        numbers.push(Math.pow(second, first));
+                        if (first < 0) {
+                            throw new NegativeDegreeException();
+                        } else {
+                            numbers.push(Math.pow(second, first));
+                        }
                         break;
                 }
             } else {

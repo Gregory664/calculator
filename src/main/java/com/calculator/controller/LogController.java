@@ -36,6 +36,4 @@ public class LogController {
                                          @RequestParam("end") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate endDate) {
         return logService.findByCallDateBetween(startDate, endDate);
     }
-
-
 }
